@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer", "RayTracer\RayTracer.csproj", "{DD423B37-C6F5-420F-8635-6744F6C688B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.Tests", "RayTracer.Tests\RayTracer.Tests.csproj", "{770AC500-6E6F-4226-B845-D2F253C43D4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD423B37-C6F5-420F-8635-6744F6C688B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD423B37-C6F5-420F-8635-6744F6C688B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD423B37-C6F5-420F-8635-6744F6C688B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD423B37-C6F5-420F-8635-6744F6C688B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770AC500-6E6F-4226-B845-D2F253C43D4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770AC500-6E6F-4226-B845-D2F253C43D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770AC500-6E6F-4226-B845-D2F253C43D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770AC500-6E6F-4226-B845-D2F253C43D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
