@@ -2,55 +2,32 @@ using System;
 
 namespace RayTracer.Models;
 
-public class MyTuple
+public class MyTuple : TupleBase
 {
-    public float X { get; set; }
-    public float Y { get; set; }
-    public float Z { get; set; }
-    public float W { get; set; }
+    public MyTuple(float x, float y, float z, float w) : base(x, y, z, w)
+    { }
 
-    public MyTuple(float x, float y, float z, float w)
+    public float X
     {
-        X = x;
-        Y = y;
-        Z = z;
-        W = w;
+        get => Values.Item1;
+        set => SetItem1(value);
     }
 
-    public void Multiply(float scalarValue)
+    public float Y
     {
-        X *= scalarValue;
-        Y *= scalarValue;
-        Z *= scalarValue;
-        W *= scalarValue;
-    }
-    
-    public void Divide(float scalarValue)
-    {
-        X = X == 0 ? 0 : X / scalarValue;
-        Y = Y == 0 ? 0 : Y / scalarValue;
-        Z = Z == 0 ? 0 : Z / scalarValue;
-        W = W == 0 ? 0 : W / scalarValue;
+        get => Values.Item2;
+        set => SetItem2(value);
     }
 
-    public bool IsAPoint => W.EqualsTo(1);
-    public bool IsAVector => W.EqualsTo(0);
-    
-    public static MyTuple operator +(MyTuple a, MyTuple b) => new (a.X+b.X, a.Y+b.Y, a.Z+b.Z, a.W+b.W );
-    
-    public static MyTuple operator -(MyTuple a, MyTuple b) => new (a.X-b.X, a.Y-b.Y, a.Z-b.Z, Math.Abs(a.W-b.W) );
-    
-    public static MyTuple operator -(MyTuple a) => new (-a.X, -a.Y, -a.Z, -a.W);
-    
-    public override bool Equals(object obj)
+    public float Z
     {
-        var tuple = obj as MyTuple;
-
-        if (tuple == null)
-            return false;
-
-        return X.EqualsTo(tuple.X) && Y.EqualsTo(tuple.Y) && Z.EqualsTo(tuple.Z) && W.EqualsTo(tuple.W);
+        get => Values.Item3;
+        set => SetItem3(value);
     }
-    
-    public override int GetHashCode() => (X, Y, Z).GetHashCode();
+
+    public float W
+    {
+        get => Values.Item4;
+        set => SetItem4(value);
+    }
 }
