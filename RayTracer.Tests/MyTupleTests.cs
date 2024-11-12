@@ -16,9 +16,11 @@ public class MyTupleTests
     {
         //Arrange
         var tuple = new MyTuple(4.3f, -4.2f, 3.1f, w);
+
+        var point = new Point(4.3f, -4.2f, 3.1f);
         
         //Assert
-        Assert.AreEqual(isAPoint, tuple.IsAPoint);
+        Assert.AreEqual(isAPoint, point.Equals(tuple));
     }
     
     [DataTestMethod]
@@ -32,9 +34,10 @@ public class MyTupleTests
     {
         //Arrange
         var tuple = new MyTuple(4.3f, -4.2f, 3.1f, w);
+        var vector = new Vector(4.3f, -4.2f, 3.1f);
         
         //Assert
-        Assert.AreEqual(isAVector, tuple.IsAVector);
+        Assert.AreEqual(isAVector, vector.Equals(tuple));
     }
     
     //Adding two tuples
