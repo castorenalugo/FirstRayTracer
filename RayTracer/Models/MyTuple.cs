@@ -17,6 +17,22 @@ public class MyTuple
         W = w;
     }
 
+    public void Multiply(float scalarValue)
+    {
+        X *= scalarValue;
+        Y *= scalarValue;
+        Z *= scalarValue;
+        W *= scalarValue;
+    }
+    
+    public void Divide(float scalarValue)
+    {
+        X = X == 0 ? 0 : X / scalarValue;
+        Y = Y == 0 ? 0 : Y / scalarValue;
+        Z = Z == 0 ? 0 : Z / scalarValue;
+        W = W == 0 ? 0 : W / scalarValue;
+    }
+
     public bool IsAPoint => W.EqualsTo(1);
     public bool IsAVector => W.EqualsTo(0);
     

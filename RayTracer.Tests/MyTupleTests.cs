@@ -115,4 +115,49 @@ public class MyTupleTests
         //Assert
         Assert.IsTrue(expected.Equals(result));
     }
+    
+    //Multiplying a tuple by a scalar
+    [TestMethod]
+    public void Tuple_ShouldMultiply_Properly()
+    {
+        //Arrange
+        var a = new MyTuple(1.0f, -2.0f, 3.0f, -4.0f);
+        
+        var expected = new MyTuple(3.5f, -7.0f, 10.5f, -14.0f);
+
+        a.Multiply(3.5f);
+        
+        //Assert
+        Assert.IsTrue(expected.Equals(a));
+    }
+
+    //Multiplying a tuple by a fraction
+    [TestMethod]
+    public void Tuple_ShouldMultiplyFractions_Properly()
+    {
+        //Arrange
+        var a = new MyTuple(1.0f, -2.0f, 3.0f, -4.0f);
+        
+        var expected = new MyTuple(0.5f, -1.0f, 1.5f, -2.0f);
+
+        a.Multiply(0.5f);
+        
+        //Assert
+        Assert.IsTrue(expected.Equals(a));
+    }
+    
+    //Dividing a tuple by a scalar
+    [TestMethod]
+    public void Tuple_ShouldDivide_Properly()
+    {
+        //Arrange
+        var a = new MyTuple(1.0f, -2.0f, 3.0f, -4.0f);
+        
+        var expected = new MyTuple(0.5f, -1.0f, 1.5f, -2.0f);
+
+        a.Divide(2f);
+        
+        //Assert
+        Assert.IsTrue(expected.Equals(a));
+    }
 }
