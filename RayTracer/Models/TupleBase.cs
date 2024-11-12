@@ -40,7 +40,10 @@ public class TupleBase
         => new TupleBase(a.Value1 + b.Value1, a.Value2 + b.Value2, a.Value3 + b.Value3, a.Value4 + b.Value4);
 
     public static TupleBase operator -(TupleBase a, TupleBase b)
-        => new TupleBase(a.Value1 - b.Value1, a.Value2 - b.Value2, a.Value3 - b.Value3, Math.Abs(a.Value4 - b.Value4));
+        => new TupleBase(a.Value1 - b.Value1, a.Value2 - b.Value2, a.Value3 - b.Value3, a.Value4 - b.Value4);
+    
+    public static TupleBase operator *(TupleBase a, TupleBase b)
+        => new TupleBase(a.Value1 * b.Value1, a.Value2 * b.Value2, a.Value3 * b.Value3, a.Value4 * b.Value4);
 
     public static TupleBase operator -(TupleBase a)
         => new TupleBase(-a.Value1, -a.Value2, -a.Value3, -a.Value4);

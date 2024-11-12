@@ -58,7 +58,7 @@ public class MyTupleTests
     
     //Subtracting two points
     [TestMethod]
-    public void Tuple_ShouldSubtrackTwoPoints_Properly()
+    public void Tuple_ShouldSubtractTwoPoints_Properly()
     {
         //Arrange
         var p1 = new Point(3.0f, 2.0f, 1.0f);
@@ -74,7 +74,7 @@ public class MyTupleTests
 
     //Subtracting a vector from a point
     [TestMethod]
-    public void Tuple_ShouldSubtrackAVectorFromAPoint_Properly()
+    public void Tuple_ShouldSubtractAVectorFromAPoint_Properly()
     {
         //Arrange
         var p = new Point(3.0f, 2.0f, 1.0f);
@@ -90,7 +90,7 @@ public class MyTupleTests
     
     //Subtracting two vectors
     [TestMethod]
-    public void Tuple_ShouldSubtrackTwoVectors_Properly()
+    public void Tuple_ShouldSubtractTwoVectors_Properly()
     {
         //Arrange
         var v1 = new Vector(3.0f, 2.0f, 1.0f);
