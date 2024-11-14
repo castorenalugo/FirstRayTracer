@@ -1,6 +1,5 @@
-﻿using System;
-using RayTracer.Models;
-using Environment = RayTracer.Models.Environment;
+﻿using RayTracer.Models;
+using RayTracer.ProjectileExercise;
 
 namespace RayTracer;
 

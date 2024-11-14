@@ -1,6 +1,7 @@
 using System;
+using RayTracer.Models;
 
-namespace RayTracer.Models;
+namespace RayTracer.ProjectileExercise;
 
 public class Projectile
 {

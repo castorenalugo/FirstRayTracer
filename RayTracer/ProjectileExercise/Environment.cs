@@ -1,4 +1,6 @@
-namespace RayTracer.Models;
+using RayTracer.Models;
+
+namespace RayTracer.ProjectileExercise;
 
 public class Environment
 {
