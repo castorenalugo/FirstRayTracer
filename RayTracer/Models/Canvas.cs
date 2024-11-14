@@ -6,7 +6,7 @@ namespace RayTracer.Models;
 
 public class Canvas
 {
-    private readonly Color[][] _pixels;
+    private readonly Color[,] _pixels;
     private readonly int _width;
     private readonly int _height;
 
@@ -16,22 +16,22 @@ public class Canvas
         _height = height;
         color ??= new Color(0.0f, 0.0f, 0.0f);
 
-        _pixels = new Color[width][];
-
+        _pixels = new Color[width,height];
+/*
         for (var i = 0; i < width; i++)
             _pixels[i] = new Color[height];
-
+*/
         for (var x = 0; x < width; x++)
             for (var y = 0; y < height; y++)
-                _pixels[x][y] = color;
+                _pixels[x,y] = color;
     }
 
-    public Color GetPixel(int x, int y) => _pixels[x][y];
+    public Color GetPixel(int x, int y) => _pixels[x,y];
 
     public void SetPixel(int x, int y, Color color)
     {
         if (x >= 0 && x < _width && y >= 0 && y < _height)
-            _pixels[x][y] = color;
+            _pixels[x,y] = color;
     }
 
 
@@ -52,7 +52,7 @@ public class Canvas
         {
             for (var x = 0; x < _width; x++)
             {
-                var pixel = _pixels[x][y].ToScaledIntStrings();
+                var pixel = _pixels[x,y].ToScaledIntStrings();
                 sb.Append(pixel);
                 currentLineLength += pixel.Length;
 
