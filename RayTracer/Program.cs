@@ -4,30 +4,37 @@ using Environment = RayTracer.Models.Environment;
 
 namespace RayTracer;
 
-class Program
+static class Program
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
         var startingPoint = new Point(0.0f, 1.0f, 0.0f);
-        var startingVelocity = new Vector(1.0f, 1.0f, 0.0f);
+        var startingVelocity = new Vector(2.0f, 1.5f, 0.0f);
         startingVelocity.Normalize();
-        var p = new Projectile(startingPoint, startingVelocity);
+        startingVelocity *= 11.25f;
+        
+        var projectile = new Projectile(startingPoint, startingVelocity);
 
-        var gravity = new Vector(0.0f, -0.1f, 0.0f);
-        var wind = new Vector(-0.1f, 0.0f, 0.0f);
+        var gravity = new Vector(0.0f, -0.07f, 0.0f);
+        var wind = new Vector(-0.05f, 0.0f, 0.0f);
         var environment = new Environment(gravity, wind);
 
-        while (p.Position.Y > 0)
+        var c = new Canvas(900, 550);
+        var red = new Color(1.0f, 0.0f, 0.0f);
+
+        while (projectile.Position.Y > 0)
         {
-            p = Tick(environment, p);
+            c.SetPixel((int)projectile.Position.X, (int)projectile.Position.Y, red);
+            projectile = Tick(environment, projectile);
         }
+        
+        c.GetFile("prueba.ppm");
     }
 
     private static Projectile Tick(Environment env, Projectile proj)
     {
-        var position = (Point)(proj.Position + proj.Velocity);
-        var velocity = (Vector)(proj.Velocity + env.Gravity + env.Wind);
+        var position = proj.Position + proj.Velocity;
+        var velocity = proj.Velocity + env.Gravity + env.Wind;
         return new Projectile(position, velocity);
     }
 }

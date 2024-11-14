@@ -9,7 +9,7 @@ public class TupleBase
     protected float Value3 { get; set; }
     protected float Value4 { get; set; }
 
-    protected TupleBase(float value1, float value2, float value3, float value4)
+    public TupleBase(float value1, float value2, float value3, float value4)
     {
         Value1 = value1;
         Value2 = value2;
@@ -35,18 +35,6 @@ public class TupleBase
         Value4 = (Value4 == 0 ? 0 : Value4 / scalarValue);
     }
     
-    // Operators
-    public static TupleBase operator +(TupleBase a, TupleBase b)
-        => new TupleBase(a.Value1 + b.Value1, a.Value2 + b.Value2, a.Value3 + b.Value3, a.Value4 + b.Value4);
-
-    public static TupleBase operator -(TupleBase a, TupleBase b)
-        => new TupleBase(a.Value1 - b.Value1, a.Value2 - b.Value2, a.Value3 - b.Value3, a.Value4 - b.Value4);
-    
-    public static TupleBase operator *(TupleBase a, TupleBase b)
-        => new TupleBase(a.Value1 * b.Value1, a.Value2 * b.Value2, a.Value3 * b.Value3, a.Value4 * b.Value4);
-
-    public static TupleBase operator -(TupleBase a)
-        => new TupleBase(-a.Value1, -a.Value2, -a.Value3, -a.Value4);
 
     // Override Equals and GetHashCode for comparison
     public override bool Equals(object obj)

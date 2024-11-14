@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Text;
 
 namespace RayTracer.Models;
 
@@ -26,43 +28,59 @@ public class Canvas
 
     public Color GetPixel(int x, int y) => _pixels[x][y];
 
-    public void SetPixel(int x, int y, Color color) => _pixels[x][y] = color;
+    public void SetPixel(int x, int y, Color color)
+    {
+        if (x >= 0 && x < _width && y >= 0 && y < _height)
+            _pixels[x][y] = color;
+    }
+
 
     public string GetFileContent()
     {
-        var result =
-            $"""
-             P3
-             {_width} {_height}
-             255
-             
-             """;
-        
+        var sb = new StringBuilder();
+        sb.Append($"""
+                   P3
+                   {_width} {_height}
+                   255
+
+                   """);
         var currentLineLength = 0;
+        const int maxLineLength = 70;
+        const int margin = 20;
+
         for (var y = 0; y < _height; y++)
         {
             for (var x = 0; x < _width; x++)
             {
-                var (r, g, b) = _pixels[x][y].ToScaledIntStrings();
-                AddColorToLine(ref currentLineLength, ref result, r);
-                AddColorToLine(ref currentLineLength, ref result, g);
-                AddColorToLine(ref currentLineLength, ref result, b);
+                var pixel = _pixels[x][y].ToScaledIntStrings();
+                sb.Append(pixel);
+                currentLineLength += pixel.Length;
+
+                if (currentLineLength + margin >= maxLineLength)
+                {
+                    sb.Append("\r\n");
+                    currentLineLength = 0;
+                }
+                else
+                {
+                    sb.Append(' ');
+                    currentLineLength += 1;
+                }
             }
         }
-
-        result = result.Substring(0, result.Length);
-        return result;
+        return sb.ToString();
     }
-    
-    private void AddColorToLine(ref int currentLineLength, ref string result, string colorValue)
+
+    public void GetFile(string filePath)
     {
-        if (currentLineLength + 20 >= 70)
-        {
-            result = result.Substring(0, result.Length - 1);
-            result += "\r\n";
-            currentLineLength = 0;
-        }
-        result += colorValue + " ";
-        currentLineLength += colorValue.Length + 1;
+        filePath ??= "output.ppm";
+
+        var rootDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+
+        filePath = Path.Combine(rootDirectory, filePath);
+
+        File.WriteAllText(filePath, GetFileContent());
+
+        Console.WriteLine("Finished creating file: " + filePath);
     }
 }

@@ -38,4 +38,22 @@ public class Vector : MyTuple
     public float Magnitude => (float)Math.Sqrt(Square(X) + Square(Y) + Square(Z) + Square(W));
 
     private float Square(float value) => value * value;
+    
+    public static Vector operator +(Vector a, Vector b)
+        => new Vector(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
+
+    public static Vector operator -(Vector a, Vector b)
+        => new Vector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+
+    public static Vector operator *(Vector a, Vector b)
+        => new Vector(a.X * b.X, a.Y * b.Y, a.Z * b.Z);
+
+    public static Vector operator -(Vector a)
+        => new Vector(-a.X, -a.Y, -a.Z);
+    
+    public static Vector operator *(Vector a, float scalarValue)
+        => new Vector(a.X * scalarValue, a.Y * scalarValue, a.Z * scalarValue);
+
+
+
 }

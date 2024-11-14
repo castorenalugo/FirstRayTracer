@@ -1,3 +1,5 @@
+using System;
+
 namespace RayTracer.Models;
 
 public class Projectile
@@ -9,5 +11,11 @@ public class Projectile
     {
         Position = position;
         Velocity = velocity;
+    }
+    
+    
+    public void PrintPosition()
+    {
+        Console.WriteLine($"X:{Position.X}       Y:{Position.Y}       Z:{Position.Z}\n");
     }
 }
