@@ -18,7 +18,6 @@ public class MyTupleTests
         var tuple = new MyTuple(4.3f, -4.2f, 3.1f, w);
 
         var point = new Point(4.3f, -4.2f, 3.1f);
-        
         //Assert
         Assert.AreEqual(isAPoint, point.Equals(tuple));
     }
@@ -99,21 +98,6 @@ public class MyTupleTests
         var expected = new Vector(-2, -4, -6);
 
         var result = v1 - v2;
-        
-        //Assert
-        Assert.IsTrue(expected.Equals(result));
-    }
-    
-    //Negating a tuple
-    [TestMethod]
-    public void Tuple_ShouldBeNegated_Properly()
-    {
-        //Arrange
-        var a = new MyTuple(1.0f, -2.0f, 3.0f, -4.0f);
-        
-        var expected = new MyTuple(-1.0f, 2.0f, -3.0f, 4.0f);
-
-        var result = -a;
         
         //Assert
         Assert.IsTrue(expected.Equals(result));

@@ -18,6 +18,21 @@ public class VectorTests
         Assert.IsTrue(expected.Equals(vector));
     }
     
+    //Negating a tuple
+    [TestMethod]
+    public void Vector_ShouldBeNegated_Properly()
+    {
+        //Arrange
+        var v = new Vector(1.0f, -2.0f, 3.0f);
+        
+        var expected = new Vector(-1.0f, 2.0f, -3.0f);
+
+        var result = -v;
+        
+        //Assert
+        Assert.IsTrue(expected.Equals(result));
+    }
+    
     //Computing the magnitude of vectors
     [DataTestMethod]
     [DataRow(1.0f, 0.0f, 0.0f, 1.0f)]

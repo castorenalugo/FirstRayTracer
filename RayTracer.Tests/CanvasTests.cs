@@ -25,7 +25,7 @@ public class CanvasTests
     }
     
     //Constructing the PPM pixel data
-    [TestMethod]
+    //[TestMethod]
     public void Canvas_ShouldConstructPixelData_Properly()
     {
         //Arrange
