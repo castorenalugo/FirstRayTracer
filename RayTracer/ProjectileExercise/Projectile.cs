@@ -3,7 +3,7 @@ using RayTracer.Models;
 
 namespace RayTracer.ProjectileExercise;
 
-public class Projectile
+public struct Projectile
 {
     public Point Position { get; set; }
     public Vector Velocity { get; set; }

@@ -5,7 +5,6 @@ namespace RayTracer.Tests;
 [TestClass]
 public class CanvasTests
 {
-    
     //Writing pixels to a canvas
     [TestMethod]
     public void Canvas_ShouldSetPixel_Properly()
@@ -74,5 +73,4 @@ public class CanvasTests
         //Assert
         Assert.AreEqual(expected, ppm);
     }
-    
 }

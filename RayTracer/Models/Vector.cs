@@ -16,7 +16,7 @@ public readonly struct Vector
         Y = y;
         Z = z;
 
-        Magnitude = (float)Math.Sqrt(Square(X) + Square(Y) + Square(Z));
+        Magnitude = (float)Math.Sqrt(X * X + Y * Y + Z * Z);
     }
     
     public Vector GetNormalized()
@@ -42,8 +42,6 @@ public readonly struct Vector
         return new Vector(x, y, z);
     }
     
-    private float Square(float value) => value * value;
-    
     public static Vector operator +(Vector a, Vector b)
         => new Vector(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
 
@@ -58,4 +56,11 @@ public readonly struct Vector
     
     public static Vector operator *(Vector a, float scalarValue)
         => new Vector(a.X * scalarValue, a.Y * scalarValue, a.Z * scalarValue);
+    
+    public bool Equals(Vector v)
+    {
+        return X.EqualsTo(v.X) && Y.EqualsTo(v.Y) && Z.EqualsTo(v.Z);
+    }
+    
+    public override int GetHashCode() => (X, Y, Z).GetHashCode();
 }

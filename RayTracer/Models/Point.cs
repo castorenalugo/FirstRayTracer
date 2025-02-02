@@ -32,4 +32,11 @@ public readonly struct Point
 
     public static Vector operator -(Point a, Point b)
         => new Vector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+    
+    public bool Equals(Point v)
+    {
+        return X.EqualsTo(v.X) && Y.EqualsTo(v.Y) && Z.EqualsTo(v.Z);
+    }
+    
+    public override int GetHashCode() => (X, Y, Z).GetHashCode();
 }

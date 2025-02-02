@@ -2,7 +2,7 @@ using System;
 
 namespace RayTracer.Models;
 
-public readonly struct Color
+public readonly record struct Color
 {
     public readonly float Red;
     public readonly float Green;
@@ -28,11 +28,6 @@ public readonly struct Color
         
     }
     
-    public Color GetMultipied(float scalarValue)
-    {
-        return new Color(Red * scalarValue, Green * scalarValue, Blue * scalarValue);
-    }
-    
     public static Color operator +(Color a, Color b)
         => new Color(a.Red + b.Red, a.Green + b.Green, a.Blue + b.Blue);
 
@@ -41,7 +36,19 @@ public readonly struct Color
 
     public static Color operator *(Color a, Color b)
         => new Color(a.Red * b.Red, a.Green * b.Green, a.Blue * b.Blue);
+    
+    public static Color operator *(Color a, float b)
+        => new Color(a.Red * b, a.Green * b, a.Blue * b);
 
+    public static Color operator /(Color a, float b)
+    {
+        var red = a.Red == 0 ? 0 : a.Red / b;
+        var green = a.Green == 0 ? 0 : a.Green / b;
+        var blue = a.Blue == 0 ? 0 : a.Blue / b;
+
+        return new Color(red, green, blue);
+    }
+    
     public static Color operator -(Color a)
         => new Color(-a.Red, -a.Green, -a.Blue);
 
@@ -50,4 +57,11 @@ public readonly struct Color
     {
         return _value;
     }
+    
+    public bool Equals(Color c)
+    {
+        return Red.EqualsTo(c.Red) && Green.EqualsTo(c.Green) && Blue.EqualsTo(c.Blue);
+    }
+    
+    public override int GetHashCode() => (Red, Green, Blue).GetHashCode();
 }

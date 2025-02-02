@@ -8,7 +8,7 @@ public class ColorTests
     
     //Colors are (red, green, blue) tuples
     [TestMethod]
-    public void Color_ShouldSetValues_Properly()
+    public void ShouldSetValues_Properly()
     {
         //Arrange
         const float red = -0.5f;
@@ -25,7 +25,7 @@ public class ColorTests
     
     //Adding colors
     [TestMethod]
-    public void Color_ShouldAddValues_Properly()
+    public void ShouldAddValues_Properly()
     {
         //Arrange
         var c1 = new Color(0.9f, 0.6f, 0.75f);
@@ -41,7 +41,7 @@ public class ColorTests
     
     //Subtract colors
     [TestMethod]
-    public void Color_ShouldSubtractValues_Properly()
+    public void ShouldSubtractValues_Properly()
     {
         //Arrange
         var c1 = new Color(0.9f, 0.6f, 0.75f);
@@ -57,14 +57,14 @@ public class ColorTests
     
     //Multiplying a color by a scalar
     [TestMethod]
-    public void Color_ShouldMultiplyValues_Properly()
+    public void ShouldMultiplyValues_Properly()
     {
         //Arrange
         var c = new Color(0.2f, 0.3f, 0.4f);
         var expected = new Color(0.4f, 0.6f, 0.8f);
         
         //Act
-        c = c.GetMultipied(2.0f);
+        c = c * 2.0f;
         
         //Assert
         Assert.IsTrue(expected.Equals(c));
@@ -72,7 +72,7 @@ public class ColorTests
     
     //Multiplying colors
     [TestMethod]
-    public void Color_ShouldMultiplyWithOther_Properly()
+    public void ShouldMultiplyWithOther_Properly()
     {
         //Arrange
         var c1 = new Color(1.0f, 0.2f, 0.4f);
@@ -84,5 +84,49 @@ public class ColorTests
         
         //Assert
         Assert.IsTrue(expected.Equals(result));
+    }
+    
+    //Multiplying a tuple by a scalar
+    [TestMethod]
+    public void ShouldMultiplyByAScalar_Properly()
+    {
+        //Arrange
+        var a = new Color(1.0f, -2.0f, 3.0f);
+        
+        var expected = new Color(3.5f, -7.0f, 10.5f);
+
+        var result = a * 3.5f;
+        
+        //Assert
+        Assert.IsTrue(expected.Equals(result));
+    }
+    
+    [TestMethod]
+    public void ShouldMultiplyFractions_Properly()
+    {
+        //Arrange
+        var a = new Color(1.0f, -2.0f, 3.0f);
+        
+        var expected = new Color(0.5f, -1.0f, 1.5f);
+
+        a = a * 0.5f;
+        
+        //Assert
+        Assert.IsTrue(expected.Equals(a));
+    }
+    
+    //Dividing a tuple by a scalar
+    [TestMethod]
+    public void ShouldDivide_Properly()
+    {
+        //Arrange
+        var a = new Color(1.0f, -2.0f, 3.0f);
+        
+        var expected = new Color(0.5f, -1.0f, 1.5f);
+
+        a = a / 2.0f;
+        
+        //Assert
+        Assert.IsTrue(expected.Equals(a));
     }
 }

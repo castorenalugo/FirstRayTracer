@@ -2,7 +2,7 @@ using RayTracer.Models;
 
 namespace RayTracer.ProjectileExercise;
 
-public class Environment
+public struct Environment
 {
     public Vector Gravity { get; set; }
     public Vector Wind { get; set; }

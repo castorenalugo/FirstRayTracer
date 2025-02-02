@@ -16,10 +16,7 @@ public readonly struct Canvas
         _height = height;
 
         _pixels = new Color[width,height];
-/*
-        for (var i = 0; i < width; i++)
-            _pixels[i] = new Color[height];
-*/
+        
         for (var x = 0; x < width; x++)
             for (var y = 0; y < height; y++)
                 _pixels[x,y] = color;
