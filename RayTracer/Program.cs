@@ -1,5 +1,7 @@
-﻿using RayTracer.Models;
+﻿using System.Numerics;
+using RayTracer.Models;
 using RayTracer.ProjectileExercise;
+using Vector = RayTracer.Models.Vector;
 
 namespace RayTracer;
 
