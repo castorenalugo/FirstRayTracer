@@ -2,29 +2,36 @@ using System;
 
 namespace RayTracer.Models;
 
-public class Vector : MyTuple
+public readonly struct Vector
 {
-    public Vector(float x, float y, float z) : base(x, y, z, 0.0f)
-    {
+    public readonly float X;
+    public readonly float Y;
+    public readonly float Z;
 
+    public readonly float Magnitude;
+    
+    public Vector(float x, float y, float z)
+    {
+        X = x;
+        Y = y;
+        Z = z;
+
+        Magnitude = (float)Math.Sqrt(Square(X) + Square(Y) + Square(Z));
+    }
+    
+    public Vector GetNormalized()
+    {
+        if (Magnitude == 0) 
+            return this;
+
+        var x = X / Magnitude;
+        var y = Y / Magnitude;
+        var z = Z / Magnitude;
+
+        return new Vector(x, y, z);
     }
 
-    public void Normalize()
-    {
-        // Calculate magnitude once and store it in a local variable
-        var magnitude = Magnitude;
-
-        // Avoid division by zero
-        if (magnitude == 0) 
-            return;
-        
-        X = X / magnitude;
-        Y = Y / magnitude;
-        Z = Z / magnitude;
-        W = W / magnitude;
-    }
-
-    public float GetDotProduct(Vector v) => (X * v.X) + (Y * v.Y) + (Z * v.Z) + (W * v.W);
+    public float GetDotProduct(Vector v) => (X * v.X) + (Y * v.Y) + (Z * v.Z) ;
 
     public Vector GetCrossProduct(Vector v)
     {
@@ -35,8 +42,6 @@ public class Vector : MyTuple
         return new Vector(x, y, z);
     }
     
-    public float Magnitude => (float)Math.Sqrt(Square(X) + Square(Y) + Square(Z) + Square(W));
-
     private float Square(float value) => value * value;
     
     public static Vector operator +(Vector a, Vector b)
@@ -53,7 +58,4 @@ public class Vector : MyTuple
     
     public static Vector operator *(Vector a, float scalarValue)
         => new Vector(a.X * scalarValue, a.Y * scalarValue, a.Z * scalarValue);
-
-
-
 }

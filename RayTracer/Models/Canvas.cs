@@ -4,17 +4,16 @@ using System.Text;
 
 namespace RayTracer.Models;
 
-public class Canvas
+public readonly struct Canvas
 {
     private readonly Color[,] _pixels;
     private readonly int _width;
     private readonly int _height;
 
-    public Canvas(int width, int height, Color color = null)
+    public Canvas(int width, int height, Color color)
     {
         _width = width;
         _height = height;
-        color ??= new Color(0.0f, 0.0f, 0.0f);
 
         _pixels = new Color[width,height];
 /*
@@ -52,7 +51,7 @@ public class Canvas
         {
             for (var x = 0; x < _width; x++)
             {
-                var pixel = _pixels[x,y].ToScaledIntStrings();
+                var pixel = _pixels[x,y].ToString();
                 sb.Append(pixel);
                 currentLineLength += pixel.Length;
 

@@ -33,7 +33,7 @@ public class ColorTests
         var expected = new Color(1.6f, 0.7f, 1.0f);
         
         //Act
-        var result = new Color(1.6f, 0.7f, 1.0f);
+        var result = c1 + c2;
 
         //Assert
         Assert.IsTrue(expected.Equals(result));
@@ -64,9 +64,7 @@ public class ColorTests
         var expected = new Color(0.4f, 0.6f, 0.8f);
         
         //Act
-        c.Multiply(2.0f);
-
-        var ea = expected.Equals(c);
+        c = c.GetMultipied(2.0f);
         
         //Assert
         Assert.IsTrue(expected.Equals(c));

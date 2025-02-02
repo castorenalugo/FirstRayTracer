@@ -1,12 +1,18 @@
-using System;
+
 
 namespace RayTracer.Models;
 
-public class Point : MyTuple
+public readonly struct Point
 {
-    public Point(float x, float y, float z) : base(x, y, z, 1.0f)
+    public readonly float X;
+    public readonly float Y;
+    public readonly float Z;
+    
+    public Point(float x, float y, float z)
     {
-        
+        X = x;
+        Y = y;
+        Z = z;
     }
     
     public static Point operator +(Point a, Point b)

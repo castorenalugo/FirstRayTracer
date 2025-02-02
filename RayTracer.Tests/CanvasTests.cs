@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using RayTracer.Models;
 
 namespace RayTracer.Tests;
@@ -13,7 +11,7 @@ public class CanvasTests
     public void Canvas_ShouldSetPixel_Properly()
     {
         //Arrange
-        var c = new Canvas(10, 20);
+        var c = new Canvas(10, 20, new Color());
         var red = new Color(1.0f, 0.0f, 0.0f);
         
         //Act
@@ -29,7 +27,7 @@ public class CanvasTests
     public void Canvas_ShouldConstructPixelData_Properly()
     {
         //Arrange
-        var c = new Canvas(5, 3);
+        var c = new Canvas(5, 3, new Color());
         var c1 = new Color(1.5f, 0.0f, 0.0f);
         var c2 = new Color(0.0f, 0.5f, 0.0f);
         var c3 = new Color(-0.5f, 0.0f, 1.0f);

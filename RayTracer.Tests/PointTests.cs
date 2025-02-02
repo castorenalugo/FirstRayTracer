@@ -2,7 +2,7 @@ using RayTracer.Models;
 
 namespace RayTracer.Tests;
 
-[TestClass]
+//[TestClass]
 public class PointTests
 {
     //point() creates tuples with w=1

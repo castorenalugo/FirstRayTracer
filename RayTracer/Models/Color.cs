@@ -2,36 +2,52 @@ using System;
 
 namespace RayTracer.Models;
 
-public class Color : TupleBase
+public readonly struct Color
 {
-    public float Red { get => Value1; set => Value1 = value; }
-    public float Green { get => Value2; set => Value2 = value; }
-    public float Blue { get => Value3; set => Value3 = value; }
+    public readonly float Red;
+    public readonly float Green;
+    public readonly float Blue;
 
-    private string _red;
-    private string _green;
-    private string _blue;
+    private readonly string _value;
     
-    public Color(float red, float green, float blue) : base(red, green, blue, 0.0f)
+    public Color(float red, float green, float blue)
     {
-        _red = ((int)(Math.Clamp(red * 255, 0, 255))).ToString();
-        _green = ((int)(Math.Clamp(green * 255, 0, 255))).ToString();
-        _blue = ((int)(Math.Clamp(blue * 255, 0, 255))).ToString();
+        Red = red;
+        Green = green;
+        Blue = blue;
+
+        var r = (int)Math.Clamp(red * 255, 0, 255);
+        var g = (int)Math.Clamp(green * 255, 0, 255);
+        var b = (int)Math.Clamp(blue * 255, 0, 255);
+
+        _value = $"{r} {g} {b}";
+    }
+
+    public Color() : this(0.0f, 0.0f, 0.0f)
+    {
+        
+    }
+    
+    public Color GetMultipied(float scalarValue)
+    {
+        return new Color(Red * scalarValue, Green * scalarValue, Blue * scalarValue);
     }
     
     public static Color operator +(Color a, Color b)
-        => new Color(a.Value1 + b.Value1, a.Value2 + b.Value2, a.Value3 + b.Value3);
+        => new Color(a.Red + b.Red, a.Green + b.Green, a.Blue + b.Blue);
 
     public static Color operator -(Color a, Color b)
-        => new Color(a.Value1 - b.Value1, a.Value2 - b.Value2, a.Value3 - b.Value3);
+        => new Color(a.Red - b.Red, a.Green - b.Green, a.Blue - b.Blue);
 
     public static Color operator *(Color a, Color b)
-        => new Color(a.Value1 * b.Value1, a.Value2 * b.Value2, a.Value3 * b.Value3);
+        => new Color(a.Red * b.Red, a.Green * b.Green, a.Blue * b.Blue);
 
     public static Color operator -(Color a)
-        => new Color(-a.Value1, -a.Value2, -a.Value3);
-    
+        => new Color(-a.Red, -a.Green, -a.Blue);
 
-    
-    public string ToScaledIntStrings() => $"{_red} {_green} {_blue}";
+
+    public override string ToString()
+    {
+        return _value;
+    }
 }

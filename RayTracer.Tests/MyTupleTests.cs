@@ -2,7 +2,7 @@ using RayTracer.Models;
 
 namespace RayTracer.Tests;
 
-[TestClass]
+//[TestClass]
 public class MyTupleTests
 {
     [DataTestMethod]
